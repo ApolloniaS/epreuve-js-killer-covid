@@ -15,7 +15,7 @@ h1, main {
   text-align: center;
 }
 
-h1 {
+h1, #orderInfo {
   text-transform: uppercase;
 }
 
@@ -23,8 +23,7 @@ img {
   width: 150px;
   height: 150px;
   border: solid 1px black;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px 0px;
 }
 
 header 
@@ -50,8 +49,7 @@ main {
 
 .vaccin {
   border: 1px solid grey;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding: 10px 0px;
 }
 
 input {
@@ -75,6 +73,19 @@ footer {
 {
   margin-right: 25px;
 }
+
+button, input
+{
+  background-color: rgba(128, 0, 128, 0.233);
+}
+
+button:disabled
+{
+  background-color: rosybrown;
+  text-decoration: line-through;
+}
+
+
 
 
 

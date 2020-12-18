@@ -3,6 +3,7 @@ import { vaccins } from './src/data';
 
 const app = document.querySelector('#app');
 
+// création d'un render
 function render() {
   app.innerHTML = '';
   app.innerHTML += `<h1>Commande de vaccins Covid</h1>
@@ -26,9 +27,9 @@ function render() {
   `;
   }
 
-  app.innerHTML += '<footer><div id="cart"></div>Total de la commande: <div id="total"></div><button id="booking">Passer la commande</button><button id="emptyCart">Annuler la réservation</button></footer>';
+  app.innerHTML += '<footer><div id="cart"></div><div id="orderInfo">Total de la commande: <span id="total"></span></div><button id="booking">Passer la commande</button><button id="emptyCart">Annuler la réservation</button></footer>';
 
-  // cacher et montrer les vaccins non-approuvés
+  // cacher/montrer les vaccins non-approuvés
   const notApproved = document.querySelectorAll('.not-approved');
 
   document.body.addEventListener('click', (e) => {
@@ -49,11 +50,12 @@ function render() {
     }
   });
 
-  // réservation -- affichage footer + bonus: calcul individuel du prix des doses
+  // réservation -- affichage footer
+  // + bonus: calcul individuel du prix des doses
   // + bonus: impossible de commander si la réservation > quantité dispo
   const reserve = document.querySelectorAll('.reserve');
   const cart = document.querySelector('#cart');
-  // const total = document.querySelector('#total');
+  const total = document.querySelector('#total');
   for (const el of reserve) {
     el.addEventListener('click', (e) => {
       const getParent = e.target.parentNode;
@@ -67,10 +69,18 @@ function render() {
       } else {
         cart.innerHTML = 'La quantité que vous désirez doit être supérieure à 0, et inférieure au nombre de vaccins disponible.';
       }
+      // total -- pas encore fonctionnel
+      const subTotals = document.querySelectorAll('.subTotal');
+      let calculateAmount = 0;
+      for (const subTotal of subTotals) {
+        calculateAmount += Number(subTotal.innerHTML);
+      }
+      total.innerHTML = `${calculateAmount}&nbsp;$`;
     });
   }
 
-  // passer la commande + bonus : impossible de passer commande si panier vide
+  // passer la commande
+  // + bonus : impossible de passer commande si panier vide
   const booking = document.querySelector('#booking');
   booking.addEventListener('click', () => {
     if (cart.innerHTML === '' || cart.innerHTML === 'Vous devez au moins sélectionner un vaccin pour commander.') {
