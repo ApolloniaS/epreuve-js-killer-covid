@@ -93,7 +93,7 @@ function render() {
     }
   });
 
-  // bonus : renvoi à la page d'origine avec un bouton annuler
+  // bonus: renvoi à la page d'origine avec un bouton annuler
   document.body.addEventListener('click', (e) => {
     if (e.target.matches('#cancel')) {
       render();
