@@ -27,7 +27,7 @@ function render() {
   `;
   }
 
-  app.innerHTML += '<footer><div id="cart"></div><div id="orderInfo">Total de la commande: <span id="total"></span></div><button id="booking">Passer la commande</button><button id="emptyCart">Annuler la réservation</button></footer>';
+  app.innerHTML += '<footer><div id="recapFooter"><div id="cart"></div><div id="orderInfo">Total de la commande: <span id="total"></span></div></div><button id="booking">Passer la commande</button><button id="emptyCart">Annuler la réservation</button></footer>';
 
   // cacher/montrer les vaccins non-approuvés
   const notApproved = document.querySelectorAll('.not-approved');
@@ -69,7 +69,7 @@ function render() {
       } else {
         cart.innerHTML = 'La quantité que vous désirez doit être supérieure à 0, et inférieure au nombre de vaccins disponible.';
       }
-      // total -- pas encore fonctionnel
+      // bonus: calcul et affichage total
       const subTotals = document.querySelectorAll('.subTotal');
       let calculateAmount = 0;
       for (const subTotal of subTotals) {
@@ -81,12 +81,13 @@ function render() {
 
   // passer la commande
   // + bonus : impossible de passer commande si panier vide
+  const footer = document.querySelector('#recapFooter');
   const booking = document.querySelector('#booking');
   booking.addEventListener('click', () => {
     if (cart.innerHTML === '' || cart.innerHTML === 'Vous devez au moins sélectionner un vaccin pour commander.') {
       cart.innerHTML = 'Vous devez au moins sélectionner un vaccin pour commander.';
     } else {
-      app.innerHTML = `La commande a bien été enregistrée !
+      app.innerHTML = `La commande a bien été enregistrée !<br/>Récapitulatif de votre commande:<br/>${footer.innerHTML};
   <button id="cancel">Annuler la commande</button>`;
     }
   });
