@@ -36,15 +36,27 @@ Les réponses peuvent être subjectives si il y a le signe **(s)** à la fin de 
 Vous pouvez répondre à même ce document ou dans un fichier à part.
 
 - Qu'est-ce que JavaScript vanilla ?
+R: "Vanilla" en informatique signifie qu'on parle de la version standard d'un pogramme. JavaScript Vanilla fait donc référence à du JavaScript pur (sans librairies ou framworks).
 - Qu'est-ce qu'AJAX ?
+R: AJAX est une API côté client qui permet de faire des requêtes sans devoir recharger la page web active: comme son nom l'indique (Asynchronous JavaScript and XML), une page web qui utilise AJAX peut envoyer des données vers le serveur et les récupérer de manière asynchrone.
 - Pourquoi JavaScript est parfois mal-aimé des devs ? **(s)**
+R: JavaScript a été créé rapidement et certains estiment que c'était une mauvaise base. Comme JavaScript se voulait simple et rapide, il est peu contraignant (par ex. si on ne met pas de points-virgules en fin d'instruction), ce qui peut être source d'erreurs. 
+JavaScript a aussi des comportements étranges (il peut essayer par exemple d'additioner des chaines de caractères et des nombres : '2' + 2 car il n'est pas fortement typé, alors qu'il devrait refuser), et des concepts peut intuitifs comme le === au lieu du == qui est la norme dans les autres langages.
+Enfin, la popularité de JavaScript fait qu'on l'utilise pour tout... et n'importe quoi.
 - Y a-t-il des types en JavaScript ? Si oui, lesquels ?
+R: Oui. Object (par ex. les array ou les function) - Number (entier ou non) - String (chaîne de caractères) - Boolean (true ou false) - Null - Undefined; à part Object, ils sont tous primitifs (Null et Undefined étant des types spéciaux car ils n'ont chacun qu'une valeur: respectivement null et undefined).
 - Est-ce que SASS est un langage qui est interprété par les navigateurs ?
+R: Non. L'interprète de SASS convertit d'abord le contenu du .scss en CSS, et ensuite cela est interprété par le navigateur.
 - Pourquoi peut-on dire que JavaScript est un langage "multi-paradigmes" ? **(s)**
+R: JavaScript est principalement fonctionnel (car en JavaScript, les fonctions sont de première classes) mais le concept de class existe également même s'il a été introduit plus récemment. Les classes en JavaScript ne fonctionnent pas tout à fait comme dans les langages orientés-objets (une classe en JS est un type de fonction, c'est du sucre syntaxique) mais il est tout à fait possible de faire du JavaScript POO.
 - En JS, une fonction peut-elle retourner une fonction ?
+R: Oui, c'est le principe de callback: en JavaScript les fonctions sont exécutées dans l'ordre où elles sont appelées et donc il est possible d'avoir des fonctions dans des fonctions qui en appelent et en retournent d'autres.
 - Est-ce que `alert` existe en Node.JS ?
+R: Non. Node.JS est là pour faire du JavaScript côté serveur, alors que alert est une fonction d'affichage en côté client, cela n'aurait donc pas de sens.
 - Est-ce que `window.console.log === console.log` dans le navigateur ?
+R: Oui. L'objet window représente la fenêtre ouverte dans le navigateur, et console.log l'affichage dans la console. "console" est juste une variable globale, et donc une propriété de l'objet "window".
 - Quel est votre aspect préféré de JavaScript ? **(s)**
+R: La rapidité de codage. On peut vite arriver à un résultat concluant en quelques lignes, sans sortir de JavaScript car le langage permet de faire énormément de choses. De plus, comme il est interprété directement par la navigateur, on peut voir visuellement le résultat en un clic (ou même aucun clic avec Parcel :)).
 
 ## Épreuve pratique sur 80pts
 Vous êtes codeuse/codeur JavaScript dans une clinique du centre-ville.
