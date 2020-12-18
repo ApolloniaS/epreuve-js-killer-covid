@@ -18,8 +18,8 @@ function render() {
         <img src="${vaccins[i].image}"><br/>
         Inventeurs: ${vaccins[i].inventeurs}<br/>
         Lieu de production: ${vaccins[i].lieudeproduction}<br/>
-        Quantité disponible: ${vaccins[i].quantite}<br/>
-        Prix unitaire: <span class="price">${vaccins[i].prixunitaire}</span>$<br/>
+        Quantité disponible: <span class="quantity">${vaccins[i].quantite}</span><br/>
+        Prix unitaire: <span class="price">${vaccins[i].prixunitaire}</span>&nbsp;$<br/>
         Officiellement approuvé: ${vaccins[i].approuve ? '<span class="approved">oui</span>' : '<span class="not-approved">non</span>'}<br/>
         Nombre de vaccins désiré:<br/><input type="number"> - <button class="reserve">Réserver</button>
     </div>
@@ -45,6 +45,7 @@ function render() {
   });
 
   // réservation -- affichage footer + bonus: calcul individuel du prix des doses
+  // + bonus: impossible de commander si la réservation > quantité dispo
   const reserve = document.querySelectorAll('.reserve');
   const cart = document.querySelector('#cart');
   // const total = document.querySelector('#total');
@@ -54,10 +55,12 @@ function render() {
       const vaccineName = getParent.querySelector('.name').innerText;
       const vaccinePrice = getParent.querySelector('.price').innerText;
       const quantity = getParent.querySelector('input').value;
-      if (quantity > 0) {
+      if (quantity > 0 && quantity <= Number(getParent.querySelector('.quantity').innerHTML)) {
         cart.innerHTML += `<br/>- ${vaccineName} x ${quantity} = <span class="subTotal">${quantity * vaccinePrice}</span>$<br/>`;
         getParent.querySelector('input').disabled = true;
         el.disabled = true;
+      } else {
+        cart.innerHTML = 'La quantité que vous désirez doit être supérieure à 0, et inférieure au nombre de vaccins disponible.';
       }
     });
   }
