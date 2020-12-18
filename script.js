@@ -5,8 +5,9 @@ const app = document.querySelector('#app');
 
 // construction du squelette
 function render() {
+  app.innerHTML = '';
   app.innerHTML += `<h1>Commande de vaccins Covid</h1>
-<header><button id="filterPrice">Classer par prix</button><button id="filterStatus" class="hide">Cacher les vaccins non-approuvés</button></header>
+<header><button id="filterPrice">Classer par prix</button><button class="hide">Cacher les vaccins non-approuvés</button></header>
 <main></main>`;
 
   const main = document.querySelector('main');
@@ -26,20 +27,24 @@ function render() {
   `;
   }
 
-  app.innerHTML += '<footer><div id="cart"></div><button id="booking">Passer la commande</button></footer>';
+  app.innerHTML += '<footer><div id="cart"></div><button id="booking">Passer la commande</button><button id="emptyCart">Annuler la réservation</button></footer>';
 }
 
 render();
-
 // cacher et montrer les vaccins non-approuvés
-const filterStatus = document.querySelector('#filterStatus');
 const notApproved = document.querySelectorAll('.not-approved');
-filterStatus.addEventListener('click', (e) => {
-  for (const el of notApproved) {
-    el.parentNode.style.display = 'none';
+
+document.body.addEventListener('click', (e) => {
+  if (e.target.className === 'hide') {
+    for (const el of notApproved) {
+      el.parentNode.style.display = 'none';
+    }
+    e.target.innerText = 'Montrer les vaccins non-approuvés';
+    e.target.classList.remove('hide');
+    e.target.classList.add('show');
+  } else if (e.target.className === 'show') {
+    render();
   }
-  filterStatus.innerText = 'Montrer les vaccins non-approuvés';
-  filterStatus.classList.add('show');
 });
 
 // réservation -- affichage footer
@@ -50,23 +55,32 @@ for (const el of reserve) {
     const getParent = e.target.parentNode;
     const vaccineName = getParent.querySelector('.name').innerText;
     const quantity = getParent.querySelector('input').value;
-    cart.innerHTML += `<br/>${vaccineName} x ${quantity}`;
+    cart.innerHTML += `<br/>- ${vaccineName} x ${quantity}`;
     getParent.querySelector('input').disabled = true;
     el.disabled = true;
   });
 }
 
-// passer la commande
+// passer la commande + bonus : impossible de passer commande si panier vide
 const booking = document.querySelector('#booking');
 booking.addEventListener('click', () => {
-  app.innerHTML = `La commande a bien été enregistrée !
+  if (cart.innerHTML === '' || cart.innerHTML === 'Vous devez au moins sélectionner un vaccin pour commander.') {
+    cart.innerHTML = 'Vous devez au moins sélectionner un vaccin pour commander.';
+  } else {
+    app.innerHTML = `La commande a bien été enregistrée !
   <button id="cancel">Annuler la commande</button>`;
+  }
 });
 
-// bonus
+// bonus : renvoi à la page d'origine avec un bouton annuler
 document.body.addEventListener('click', (e) => {
   if (e.target.matches('#cancel')) {
-    app.innerHTML = '';
     render();
   }
+});
+
+// bonus: annuler la réservation
+const emptyCart = document.querySelector('#emptyCart');
+emptyCart.addEventListener('click', () => {
+  render();
 });

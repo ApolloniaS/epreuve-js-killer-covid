@@ -28,16 +28,18 @@ img {
 }
 
 header 
-{ display : flex;
-justify-content: space-around;
-margin-bottom: 50px;
-border-top: 1px grey solid;
-border-bottom: 1px grey solid;
-padding: 10px;
+{ 
+  display : flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+  border-top: 1px grey solid;
+  border-bottom: 1px grey solid;
+  padding: 10px;
 }
 
 main {
   display: grid;
+  justify-content: center;
   grid-template-columns: 30% 30% 30%;
 }
 
@@ -64,7 +66,14 @@ footer {
 }
 
 #cart {
+  width: 50%;
   background-color: grey;
+  padding-left: 10px;
+}
+
+#booking
+{
+  margin-right: 25px;
 }
 
 
