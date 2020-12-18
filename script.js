@@ -81,6 +81,7 @@ function render() {
 
   // passer la commande
   // + bonus : impossible de passer commande si panier vide
+  // + bonus: reprise des infos sur la "nouvelle page"
   const footer = document.querySelector('#recapFooter');
   const booking = document.querySelector('#booking');
   booking.addEventListener('click', () => {
