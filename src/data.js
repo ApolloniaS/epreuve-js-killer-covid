@@ -45,7 +45,7 @@ export const vaccins = [
   {
     nom: 'mRNA-1273',
     inventeurs: ['Moderna', 'NIAID', 'BARDA'],
-    lieudeproduction: 'USA',
+    lieudeproduction: ['USA'],
     technologie: 'ARN messager',
     quantite: 240,
     prixunitaire: 28,

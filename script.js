@@ -16,8 +16,8 @@ function render() {
     <div class="vaccin">
         <span class="name">${vaccins[i].nom}</span><br/>
         <img src="${vaccins[i].image}"><br/>
-        Inventeurs: ${vaccins[i].inventeurs}<br/>
-        Lieu de production: ${vaccins[i].lieudeproduction}<br/>
+        Inventeurs: ${vaccins[i].inventeurs.join(', ')}<br/>
+        Lieu de production: ${vaccins[i].lieudeproduction.join(', ')}<br/>
         Quantité disponible: <span class="quantity">${vaccins[i].quantite}</span><br/>
         Prix unitaire: <span class="price">${vaccins[i].prixunitaire}</span>&nbsp;$<br/>
         Officiellement approuvé: ${vaccins[i].approuve ? '<span class="approved">oui</span>' : '<span class="not-approved">non</span>'}<br/>
@@ -40,7 +40,12 @@ function render() {
       e.target.classList.remove('hide');
       e.target.classList.add('show');
     } else if (e.target.className === 'show') {
-      render();
+      for (const el of notApproved) {
+        el.parentNode.style.display = 'block';
+      }
+      e.target.innerText = 'Cacher les vaccins non-approuvés';
+      e.target.classList.add('hide');
+      e.target.classList.remove('show');
     }
   });
 
@@ -86,6 +91,13 @@ function render() {
   // bonus: annuler la réservation
   const emptyCart = document.querySelector('#emptyCart');
   emptyCart.addEventListener('click', () => {
+    render();
+  });
+
+  // bonus: filtrer par prix du - moins au + cher
+  const filterPrice = document.querySelector('#filterPrice');
+  filterPrice.addEventListener('click', () => {
+    vaccins.sort((min, max) => min.prixunitaire - max.prixunitaire);
     render();
   });
 }
