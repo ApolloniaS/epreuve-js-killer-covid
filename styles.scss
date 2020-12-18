@@ -8,21 +8,32 @@ body {
   padding: 0;
   margin: 0;
   min-height: 100%;
+  background-color: lightgray;
 }
 
 h1, main {
   text-align: center;
 }
 
+h1 {
+  text-transform: uppercase;
+}
+
 img {
   width: 150px;
   height: 150px;
   border: solid 1px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 header 
 { display : flex;
 justify-content: space-around;
+margin-bottom: 50px;
+border-top: 1px grey solid;
+border-bottom: 1px grey solid;
+padding: 10px;
 }
 
 main {
@@ -30,6 +41,31 @@ main {
   grid-template-columns: 30% 30% 30%;
 }
 
-.not-approved {
-  display : block;
+.name {
+  text-decoration: underline;
+  font-weight: bold;
 }
+
+.vaccin {
+  border: 1px solid grey;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+input {
+  width: 15%;
+}
+
+footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  border-top: black 1px solid;
+}
+
+#cart {
+  background-color: grey;
+}
+
+
+

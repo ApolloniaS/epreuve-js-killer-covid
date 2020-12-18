@@ -41,7 +41,7 @@ R: "Vanilla" en informatique signifie qu'on parle de la version standard d'un po
 R: AJAX est une API côté client qui permet de faire des requêtes sans devoir recharger la page web active: comme son nom l'indique (Asynchronous JavaScript and XML), une page web qui utilise AJAX peut envoyer des données vers le serveur et les récupérer de manière asynchrone.
 - Pourquoi JavaScript est parfois mal-aimé des devs ? **(s)**
 R: JavaScript a été créé rapidement et certains estiment que c'était une mauvaise base. Comme JavaScript se voulait simple et rapide, il est peu contraignant (par ex. si on ne met pas de points-virgules en fin d'instruction), ce qui peut être source d'erreurs. 
-JavaScript a aussi des comportements étranges (il peut essayer par exemple d'additioner des chaines de caractères et des nombres : '2' + 2 car il n'est pas fortement typé, alors qu'il devrait refuser), et des concepts peut intuitifs comme le === au lieu du == qui est la norme dans les autres langages.
+JavaScript a aussi des comportements étranges (il peut essayer par exemple d'additioner des chaines de caractères et des nombres : '2' + 2 car il n'est pas fortement typé, alors qu'il devrait refuser), et des concepts peu intuitifs comme le === au lieu du == qui est la norme dans les autres langages.
 Enfin, la popularité de JavaScript fait qu'on l'utilise pour tout... et n'importe quoi.
 - Y a-t-il des types en JavaScript ? Si oui, lesquels ?
 R: Oui. Object (par ex. les array ou les function) - Number (entier ou non) - String (chaîne de caractères) - Boolean (true ou false) - Null - Undefined; à part Object, ils sont tous primitifs (Null et Undefined étant des types spéciaux car ils n'ont chacun qu'une valeur: respectivement null et undefined).
